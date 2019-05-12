@@ -13,52 +13,76 @@
 	</resultMap>
 	
 	<select id="getUser" parameterType="com.yougou.pojo.User"  resultMap="BaseResultMap">
-		select * from user where 1= 1
+		select * from user
+		<where>
 			<if test="name != null and name !='' ">
 				and name like CONCAT('%',#{name},'%')
 			</if>
+		</where>
+		<where>
 			<if test="age != null and age !='' ">
 				and age = #{age}
 			</if>
+		</where>
+		<where>
 			<if test="loginName != null and loginName !='' ">
 				and loginName like CONCAT('%',#{loginName},'%')
 			</if>
+		</where>
+		<where>
 			<if test="dept != null and dept !='' ">
 				and dept like CONCAT('%',#{dept},'%')
 			</if>
+		</where>
+		<where>
 			<if test="sex != null and sex !='' ">
 				and sex = #{sex}
 			</if>
+		</where>
+		<where>
 			<if test="mail != null and mail !='' ">
 				and mail like CONCAT('%',#{mail},'%')
 			</if>
+		</where>
              order by name
-			<if test="page != null and page !='' and limit !=null and limit != ''">
-				 limit ${page},${limit}
+			<if test="pageNum != null and pageNum !='' and pageSize !=null and pageSize != ''">
+				 limit ${pageNum},${pageSize}
 			</if>
 
 
 	</select>
 
 	<select id="getUserCount" parameterType="com.yougou.pojo.User"  resultType="Integer">
-		select count(*) from user where 1=1
+		select count(*) from user
+		<where>
 			<if test="name != null and name !='' ">
 				and name like CONCAT('%',#{name},'%')
 			</if>
+		</where>
+		<where>
 			<if test="age != null and age !='' ">
 				and age = #{age}
 			</if>
+		</where>
+		<where>
 			<if test="loginName != null and loginName !='' ">
 				and loginName like CONCAT('%',#{loginName},'%')
 			</if>
+		</where>
+		<where>
 			<if test="dept != null and dept !='' ">
 				and dept like CONCAT('%',#{dept},'%')
 			</if>
+		</where>
+		<where>
 			<if test="sex != null and sex !='' ">
 				and sex = #{sex}
 			</if>
+		</where>
+		<where>
 			<if test="mail != null and mail !='' ">
 				and mail like CONCAT('%',#{mail},'%')
 			</if>
+		</where>
 	</select>
 </mapper>

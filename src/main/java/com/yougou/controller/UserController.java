@@ -1,7 +1,5 @@
 package com.yougou.controller;
 
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.yougou.mapper.UserMapper;
 import com.yougou.pojo.User;
@@ -38,19 +36,16 @@ public class UserController {
         if (user == null){
             user = new User();
         }
-        if (user.getLimit() != null && user.getLimit() != null && user.getLimit().length()>0 && user.getLimit().length() > 0){
-            Integer pageNum = Integer.valueOf(user.getPage());
-            Integer pageSize = Integer.valueOf(user.getLimit());
-            user.setPage((String.valueOf((pageNum-1)*pageSize)));
+        if (user.getPageSize() != null && user.getPageSize() != null && user.getPageSize().length()>0 && user.getPageSize().length() > 0){
+            Integer pageNum = Integer.valueOf(user.getPageNum());
+            Integer pageSize = Integer.valueOf(user.getPageSize());
+            user.setPageNum((String.valueOf((pageNum-1)*pageSize)));
+
         }
         JSONObject jsonObject = new JSONObject();
         Integer userCount = userService.getUserCount(user);
-        List<User> list = userService.getUser(user);
-        JSONArray array= JSONArray.parseArray(JSON.toJSONString(list));
-        jsonObject.put("code",0);
-        jsonObject.put("msg","");
-        jsonObject.put("count",userCount);
-        jsonObject.put("data",array);
+        jsonObject.put("users",userService.getUser(user));
+        jsonObject.put("count", userCount);
         return  jsonObject;
     }
 
@@ -110,24 +105,6 @@ public class UserController {
         return jsonObject;
     }
 
-    @RequestMapping("/delAll")
-    @ResponseBody
-    JSONObject delAll(String[] ids){
-        JSONObject jsonObject = new JSONObject();
-        Integer flag = 0;
-        try {
-            if (ids != null && ids.length > 0){
-                for (Object id : ids) {
-                    userMapper.deleteByPrimaryKey(id);
-                }
-            }
-        } catch (Exception e) {
-            flag = 1;
-        }
-        jsonObject.put("delAll", flag);
-        return jsonObject;
-    }
-
     @RequestMapping("/login")
     @ResponseBody
     JSONObject login(String loginName, String pwd){
@@ -151,24 +128,6 @@ public class UserController {
             }
         }
         return jsonObject;
-    }
-
-    @RequestMapping("/sendMail")
-    @ResponseBody
-    JSONObject sendMail(String mail){
-        return userService.sendEmail(mail);
-    }
-
-    @RequestMapping("/verifyEmail")
-    @ResponseBody
-    JSONObject verifyEmail(String mail, String code){
-        return userService.verifyEmailCode(mail, code);
-    }
-
-    @RequestMapping("/changePwd")
-    @ResponseBody
-    JSONObject changePwd(String mail, String newPwd){
-        return userService.changePwd(mail, newPwd);
     }
 
 }

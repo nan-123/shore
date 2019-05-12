@@ -1,13 +1,9 @@
 package com.yougou.controller;
 
 import com.alibaba.fastjson.JSONObject;
-import com.yougou.mapper.DepartmentMapper;
 import com.yougou.mapper.UserMapper;
-import com.yougou.pojo.Department;
 import com.yougou.pojo.User;
-import com.yougou.service.IDepartmentService;
 import com.yougou.service.IUserService;
-import com.yougou.service.impl.MailService;
 import com.yougou.util.RedisUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -32,15 +28,6 @@ public class DemoController {
     @Resource
     private UserMapper userMapper;
 
-    @Resource
-   private MailService mailService;
-
-    @Resource
-    private IDepartmentService departmentService;
-
-    @Resource
-    private DepartmentMapper departmentMapper;
-
     @ResponseBody
     @RequestMapping("/hello")
     String hello() {
@@ -53,10 +40,10 @@ public class DemoController {
         if (user == null){
             user = new User();
         }
-        if (user.getLimit() != null && user.getLimit() != null && user.getLimit().length()>0 && user.getLimit().length() > 0){
-            Integer pageNum = Integer.valueOf(user.getPage());
-            Integer pageSize = Integer.valueOf(user.getLimit());
-            user.setPage((String.valueOf((pageNum-1)*pageSize)));
+        if (user.getPageSize() != null && user.getPageSize() != null && user.getPageSize().length()>0 && user.getPageSize().length() > 0){
+            Integer pageNum = Integer.valueOf(user.getPageNum());
+            Integer pageSize = Integer.valueOf(user.getPageSize());
+            user.setPageNum((String.valueOf((pageNum-1)*pageSize)));
 
         }
         JSONObject jsonObject = new JSONObject();
@@ -181,20 +168,5 @@ public class DemoController {
         return jsonObject;
     }
 
-    @RequestMapping("/mail")
-    @ResponseBody
-    public void sendSimpleMail() {
-   mailService.sendSimpleMail("280173077@qq.com", "主题：简单邮件", "测试邮件内容");
-            }
-
-    @RequestMapping("/dept")
-    @ResponseBody
-    public void deptTest(){
-        Department department = new Department();
-         department.setName("开发部1");
-        department.setPid("0");
-        department.setDes("测试");
-        departmentMapper.insert(department);
-    }
 
 }

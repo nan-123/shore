@@ -32,10 +32,10 @@ public class User {
     private String mail;
 
     @Transient
-    private String page;
+    private String pageNum;
 
     @Transient
-    private String limit;
+    private String pageSize;
 
     public String getId() {
         return id;
@@ -101,19 +101,19 @@ public class User {
         this.mail = mail;
     }
 
-    public String getPage() {
-        return page;
+    public String getPageNum() {
+        return pageNum;
     }
 
-    public void setPage(String page) {
-        this.page = page;
+    public void setPageNum(String pageNum) {
+        this.pageNum = pageNum;
     }
 
-    public String getLimit() {
-        return limit;
+    public String getPageSize() {
+        return pageSize;
     }
 
-    public void setLimit(String limit) {
-        this.limit = limit;
+    public void setPageSize(String pageSize) {
+        this.pageSize = pageSize;
     }
 }
