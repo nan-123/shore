@@ -1,0 +1,45 @@
+#配置数据源
+spring:
+
+  datasource:
+     url: jdbc:mysql://127.0.0.1:3306/shorobot?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf8
+     username: root
+     password: 123456
+     driver-class-name: com.mysql.jdbc.Driver
+
+
+
+
+    #redis
+     redis:
+       host: 127.0.0.1
+       port: 6379
+       pool:
+         max-active: 8
+         max-wait: 1
+         max-idle: 8
+         min-idle: 0
+       timeout: 0
+
+# 打印sql
+logging:
+  level:
+    com.yougou.mapper : debug
+
+
+
+#指定mybatis映射文件的地址
+mybatis:
+  type-aliases-package: com.yougou.pojo
+  mapper-locations: classpath:mapper/*.xml
+
+mapper:
+    mappers: tk.mybatis.mapper.common.Mapper
+    identity: MYSQL # SELECT LAST_INSERT_ID()
+    style: camelhumpAndUppercase
+    before: true # set this attribute value as true so that we can make uuid writable.
+    not-empty: true
+    safe-delete: true
+    safe-update: true
+    check-example-entity-class: true
+

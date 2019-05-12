@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yougou.mapper.UserMapper">
+	<resultMap id="BaseResultMap" type="com.yougou.pojo.User">
+		<id column="id" jdbcType="VARCHAR" property="id" />
+		<result column="name" jdbcType="VARCHAR" property="name" />
+		<result column="age" jdbcType="VARCHAR" property="age" />
+		<result column="loginName" jdbcType="VARCHAR" property="loginName" />
+		<result column="pwd" jdbcType="VARCHAR" property="pwd" />
+		<result column="dept" jdbcType="VARCHAR" property="dept" />
+		<result column="sex" jdbcType="VARCHAR" property="sex" />
+		<result column="mail" jdbcType="VARCHAR" property="mail" />
+	</resultMap>
+	
+	<select id="getUser" parameterType="com.yougou.pojo.User"  resultMap="BaseResultMap">
+		select * from user
+		<where>
+			<if test="name != null and name !='' ">
+				and name like CONCAT('%',#{name},'%')
+			</if>
+		</where>
+		<where>
+			<if test="age != null and age !='' ">
+				and age = #{age}
+			</if>
+		</where>
+		<where>
+			<if test="loginName != null and loginName !='' ">
+				and loginName like CONCAT('%',#{loginName},'%')
+			</if>
+		</where>
+		<where>
+			<if test="dept != null and dept !='' ">
+				and dept like CONCAT('%',#{dept},'%')
+			</if>
+		</where>
+		<where>
+			<if test="sex != null and sex !='' ">
+				and sex = #{sex}
+			</if>
+		</where>
+		<where>
+			<if test="mail != null and mail !='' ">
+				and mail like CONCAT('%',#{mail},'%')
+			</if>
+		</where>
+             order by name
+			<if test="pageNum != null and pageNum !='' and pageSize !=null and pageSize != ''">
+				 limit ${pageNum},${pageSize}
+			</if>
+
+
+	</select>
+
+	<select id="getUserCount" parameterType="com.yougou.pojo.User"  resultType="Integer">
+		select count(*) from user
+		<where>
+			<if test="name != null and name !='' ">
+				and name like CONCAT('%',#{name},'%')
+			</if>
+		</where>
+		<where>
+			<if test="age != null and age !='' ">
+				and age = #{age}
+			</if>
+		</where>
+		<where>
+			<if test="loginName != null and loginName !='' ">
+				and loginName like CONCAT('%',#{loginName},'%')
+			</if>
+		</where>
+		<where>
+			<if test="dept != null and dept !='' ">
+				and dept like CONCAT('%',#{dept},'%')
+			</if>
+		</where>
+		<where>
+			<if test="sex != null and sex !='' ">
+				and sex = #{sex}
+			</if>
+		</where>
+		<where>
+			<if test="mail != null and mail !='' ">
+				and mail like CONCAT('%',#{mail},'%')
+			</if>
+		</where>
+	</select>
+</mapper>
