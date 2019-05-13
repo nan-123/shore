@@ -20,16 +20,15 @@ public class NodeController {
     @ResponseBody
     public List<Node> getNodes() throws Exception{
         List<Node> nodeList = new ArrayList<Node>();
-        nodeList.add(new Node("1","0","硬件规格","false","true"));
-        nodeList.add(new Node("10","1","单板","false","true"));
-        nodeList.add(new Node("11","1","子卡","false","true"));
-        nodeList.add(new Node("12","1","设备","false","true"));
-        nodeList.add(new Node("2","0","软件规格","false","true"));
-        nodeList.add(new Node("20","2","java","false","true"));
-        nodeList.add(new Node("21","2","jscript","false","true"));
-        nodeList.add(new Node("22","2","php","false","true"));
-        nodeList.add(new Node("100","10","单板_00","false","false"));
-        nodeList.add(new Node("101","10","单板_01","false","false"));
+        nodeList.add(new Node("21","0","总经理",true));
+        nodeList.add(new Node("26","0","技术部",true));
+        nodeList.add(new Node("27","26","项目经理",false));
+        nodeList.add(new Node("28","26","项目组组长",false));
+        nodeList.add(new Node("29","0","安全部",true));
+        nodeList.add(new Node("30","29","网络安全部负责人",false));
+        nodeList.add(new Node("31","29","硬件规格",false));
+        nodeList.add(new Node("32","27","后端开发",false));
+        nodeList.add(new Node("33","27","前端开发",false));
         return nodeList;
     }
 

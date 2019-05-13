@@ -4,16 +4,13 @@ public class Node {
     private String id;
     private String pid;
     private String name;
-    private String open;
-    private String isParent;
+    private boolean parent;
 
-    public Node(String id, String pid, String name, String open, String isParent) {
-        super();
+    public Node(String id, String pid, String name, boolean parent) {
         this.id = id;
         this.pid = pid;
         this.name = name;
-        this.open = open;
-        this.isParent = isParent;
+        this.parent = parent;
     }
 
     public String getId() {
@@ -40,19 +37,11 @@ public class Node {
         this.name = name;
     }
 
-    public String getOpen() {
-        return open;
+    public boolean isParent() {
+        return parent;
     }
 
-    public void setOpen(String open) {
-        this.open = open;
-    }
-
-    public String getIsParent() {
-        return isParent;
-    }
-
-    public void setIsParent(String isParent) {
-        this.isParent = isParent;
+    public void setParent(boolean parent) {
+        this.parent = parent;
     }
 }
