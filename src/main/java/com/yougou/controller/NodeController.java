@@ -29,6 +29,9 @@ public class NodeController {
         nodeList.add(new Node("31","29","硬件规格",false));
         nodeList.add(new Node("32","27","后端开发",false));
         nodeList.add(new Node("33","27","前端开发",false));
+        nodeList.add(new Node("34","32","电商组",false));
+        nodeList.add(new Node("35","34","电商1组",false));
+        nodeList.add(new Node("36","0","行政",false));
         return nodeList;
     }
 
