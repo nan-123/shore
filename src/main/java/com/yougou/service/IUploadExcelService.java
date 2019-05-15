@@ -8,6 +8,6 @@ import java.util.List;
 
 public interface IUploadExcelService {
 
-	 void UploadExcel(InputStream in, MultipartFile file, List<List<Object>> listob, HttpServletResponse response);
+	 Integer UploadExcel(InputStream in, MultipartFile file, List<List<Object>> listob);
 
 }

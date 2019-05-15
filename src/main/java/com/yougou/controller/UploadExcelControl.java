@@ -1,5 +1,6 @@
 package com.yougou.controller;
 
+import com.alibaba.fastjson.JSONObject;
 import com.yougou.service.IUploadExcelService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -31,15 +32,19 @@ public class UploadExcelControl {
      */  
     @ResponseBody
     @RequestMapping("/ajaxUpload")
-    public  void  ajaxUploadExcel(MultipartFile upfile, HttpServletResponse response) throws Exception {
+    public JSONObject ajaxUploadExcel(MultipartFile upfile) throws Exception {
+        JSONObject jsonObject = new JSONObject();
+        Integer flag = 0;
         InputStream in =null;
         List<List<Object>> listob = null;
         if(upfile.isEmpty()){
             throw new Exception("文件不存在！");
-        }  
-          
+        }
+
         in = upfile.getInputStream();
-       service.UploadExcel(in, upfile, listob, response);
+        flag = service.UploadExcel(in, upfile, listob);
+        jsonObject.put("upload", flag);
+        return jsonObject;
     }  
 
 }

@@ -24,7 +24,8 @@ public class UploadExcelServiceImpl implements IUploadExcelService {
 	 private UserMapper userMapper;
 
 	@Override
-	public void UploadExcel(InputStream in, MultipartFile file, List<List<Object>> listob, HttpServletResponse response) {
+	public Integer UploadExcel(InputStream in, MultipartFile file, List<List<Object>> listob) {
+		Integer flag = 0;
 		try {
 			listob = new ImportExcelUtil().getBankListByExcel(in,file.getOriginalFilename());
 			  for (int i = 0; i < listob.size(); i++) {
@@ -42,30 +43,10 @@ public class UploadExcelServiceImpl implements IUploadExcelService {
 					  user.setId(sid);
 					  userMapper.insert(user );
 			  }
-			  PrintWriter out = null;
-		        response.setCharacterEncoding("utf-8");  //防止ajax接受到的中文信息乱码  
-		        out = response.getWriter();  
-		        out.print("文件导入成功！");  
-		        out.flush();  
-		        out.close();  
-			
 		} catch (Exception e) {
-			e.printStackTrace();
-			 PrintWriter out = null;  
-		        response.setCharacterEncoding("utf-8");  //防止ajax接受到的中文信息乱码  
-		        try {
-					out = response.getWriter();
-				} catch (IOException e1) {
-					e1.printStackTrace();
-				}  
-		        out.print("文件导入失败！");
-		        out.flush();  
-		        out.close(); 
-		        throw new RuntimeException(e);
-		   
-		} 
-		
-		
+			flag = 1;
+		}
+		return flag;
 	}
 
 	
