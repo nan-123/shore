@@ -31,22 +31,15 @@ public class UploadExcelControl {
      */  
     @ResponseBody
     @RequestMapping("/ajaxUpload")
-    public  void  ajaxUploadExcel(MultipartFile photo, HttpServletResponse response) throws Exception {
-//    	System.out.println("能到达这里！");
-//    	MultipartResolver resolver = new CommonsMultipartResolver(request.getSession().getServletContext());
-//    	MultipartHttpServletRequest multipartRequest = resolver.resolveMultipart(request);
-//
-//        System.out.println("通过 jquery.form.js 提供的ajax方式上传文件！");
-//
+    public  void  ajaxUploadExcel(MultipartFile upfile, HttpServletResponse response) throws Exception {
         InputStream in =null;
         List<List<Object>> listob = null;
-//        MultipartFile file = multipartRequest.getFile("upfile");
-        if(photo.isEmpty()){
+        if(upfile.isEmpty()){
             throw new Exception("文件不存在！");
         }  
           
-        in = photo.getInputStream();
-       service.UploadExcel(in, photo, listob, response);
+        in = upfile.getInputStream();
+       service.UploadExcel(in, upfile, listob, response);
     }  
 
 }
