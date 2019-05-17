@@ -105,6 +105,24 @@ public class UserController {
         return jsonObject;
     }
 
+    @RequestMapping("/delAll")
+    @ResponseBody
+    JSONObject delAll(String[] ids){
+        JSONObject jsonObject = new JSONObject();
+        Integer flag = 0;
+        try {
+            if (ids != null && ids.length > 0){
+                for (Object id : ids) {
+                    userMapper.deleteByPrimaryKey(id);
+                }
+            }
+        } catch (Exception e) {
+            flag = 1;
+        }
+        jsonObject.put("delAll", flag);
+        return jsonObject;
+    }
+
     @RequestMapping("/login")
     @ResponseBody
     JSONObject login(String loginName, String pwd){
