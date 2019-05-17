@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.ServletOutputStream;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
 import java.net.URL;
@@ -96,9 +95,16 @@ public class UploadExcelControl {
      */
     @RequestMapping(value = "/export")
     @ResponseBody
-    public void export(HttpServletResponse response){
+    public JSONObject export(HttpServletResponse response, User user){
+        JSONObject jsonObject = new JSONObject();
+        Integer flag = 0;
         //获取数据
-        List<User> list = userService.getUser(new User());
+        if (user == null) {
+            user = new User();
+        }
+        user.setPageNum(null);
+        user.setPageSize(null);
+        List<User> list = userService.getUser(user);
 
         //excel标题
         String[] title = {"姓名","年龄","登录名","部门","性别","邮箱"};
@@ -113,13 +119,13 @@ public class UploadExcelControl {
 
             for (int i = 0; i < list.size(); i++) {
             content[i] = new String[title.length];
-            User user = list.get(i);
-            content[i][0] = user.getName();
-            content[i][1] = user.getAge();
-            content[i][2] = user.getLoginName();
-            content[i][3] = user.getDept();
-            content[i][4] = user.getSex();
-            content[i][5] = user.getMail();
+            User userVo = list.get(i);
+            content[i][0] = userVo.getName();
+            content[i][1] = userVo.getAge();
+            content[i][2] = userVo.getLoginName();
+            content[i][3] = userVo.getDept();
+            content[i][4] = userVo.getSex();
+            content[i][5] = userVo.getMail();
     }
 
       //创建HSSFWorkbook
@@ -133,8 +139,10 @@ public class UploadExcelControl {
            os.flush();
            os.close();
        } catch (Exception e) {
-           e.printStackTrace();
+           flag = 1;
        }
+      jsonObject.put("export", flag);
+      return jsonObject;
   }
 
     //发送响应流方法
