@@ -65,7 +65,7 @@ public class UploadExcelControl {
         response.reset();
         response.setContentType("application/vnd.ms-excel;charset=utf-8");
         try {
-            response.setHeader("Content-Disposition", "attachment;filename="+ new String(("用户导入模板" + ".xlsx").getBytes(), "iso-8859-1"));//下载文件的名称
+            response.setHeader("Content-Disposition", "attachment;filename="+ new String(("用户导入模板" + ".xls").getBytes(), "iso-8859-1"));//下载文件的名称
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
