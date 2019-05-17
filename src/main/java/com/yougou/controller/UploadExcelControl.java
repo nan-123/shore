@@ -95,10 +95,7 @@ public class UploadExcelControl {
      */
     @RequestMapping(value = "/export")
     @ResponseBody
-    public JSONObject export(HttpServletResponse response, User user){
-        JSONObject jsonObject = new JSONObject();
-        Integer flag = 0;
-        //获取数据
+    public void export(HttpServletResponse response, User user){
         if (user == null) {
             user = new User();
         }
@@ -139,10 +136,7 @@ public class UploadExcelControl {
            os.flush();
            os.close();
        } catch (Exception e) {
-           flag = 1;
        }
-      jsonObject.put("export", flag);
-      return jsonObject;
   }
 
     //发送响应流方法
