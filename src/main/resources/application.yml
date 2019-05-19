@@ -21,6 +21,11 @@ spring:
          min-idle: 0
        timeout: 0
 
+  mail:
+    host: smtp.qq.com
+    username: 280173077@qq.com
+    password: ffyfbwninuzfcaee
+
 # ¥Ú”°sql
 logging:
   level:

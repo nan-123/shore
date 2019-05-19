@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.yougou.mapper.UserMapper;
 import com.yougou.pojo.User;
 import com.yougou.service.IUserService;
+import com.yougou.service.impl.MailService;
 import com.yougou.util.RedisUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -27,6 +28,9 @@ public class DemoController {
 
     @Resource
     private UserMapper userMapper;
+
+    @Resource
+   private MailService mailService;
 
     @ResponseBody
     @RequestMapping("/hello")
@@ -168,5 +172,9 @@ public class DemoController {
         return jsonObject;
     }
 
-
+    @RequestMapping("/mail")
+    @ResponseBody
+    public void sendSimpleMail() {
+   mailService.sendSimpleMail("280173077@qq.com", "主题：简单邮件", "测试邮件内容");
+            }
 }
