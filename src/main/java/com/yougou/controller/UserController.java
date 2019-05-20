@@ -148,4 +148,22 @@ public class UserController {
         return jsonObject;
     }
 
+    @RequestMapping("/sendMail")
+    @ResponseBody
+    JSONObject sendMail(String mail){
+        return userService.sendEmail(mail);
+    }
+
+    @RequestMapping("/verifyEmail")
+    @ResponseBody
+    JSONObject verifyEmail(String mail, String code){
+        return userService.verifyEmailCode(mail, code);
+    }
+
+    @RequestMapping("/changePwd")
+    @ResponseBody
+    JSONObject changePwd(String mail, String newPwd){
+        return userService.changePwd(mail, newPwd);
+    }
+
 }
