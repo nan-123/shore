@@ -44,10 +44,10 @@ public class DemoController {
         if (user == null){
             user = new User();
         }
-        if (user.getPageSize() != null && user.getPageSize() != null && user.getPageSize().length()>0 && user.getPageSize().length() > 0){
-            Integer pageNum = Integer.valueOf(user.getPageNum());
-            Integer pageSize = Integer.valueOf(user.getPageSize());
-            user.setPageNum((String.valueOf((pageNum-1)*pageSize)));
+        if (user.getLimit() != null && user.getLimit() != null && user.getLimit().length()>0 && user.getLimit().length() > 0){
+            Integer pageNum = Integer.valueOf(user.getPage());
+            Integer pageSize = Integer.valueOf(user.getLimit());
+            user.setPage((String.valueOf((pageNum-1)*pageSize)));
 
         }
         JSONObject jsonObject = new JSONObject();

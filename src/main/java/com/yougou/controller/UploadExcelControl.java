@@ -99,8 +99,8 @@ public class UploadExcelControl {
         if (user == null) {
             user = new User();
         }
-        user.setPageNum(null);
-        user.setPageSize(null);
+        user.setPage(null);
+        user.setLimit(null);
         List<User> list = userService.getUser(user);
 
         //excel标题

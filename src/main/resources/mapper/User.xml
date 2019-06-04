@@ -45,8 +45,8 @@
 			</if>
 		</where>
              order by name
-			<if test="pageNum != null and pageNum !='' and pageSize !=null and pageSize != ''">
-				 limit ${pageNum},${pageSize}
+			<if test="page != null and page !='' and limit !=null and limit != ''">
+				 limit ${page},${limit}
 			</if>
 
 
