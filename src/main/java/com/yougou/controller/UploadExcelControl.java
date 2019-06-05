@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -35,17 +36,17 @@ public class UploadExcelControl {
      */  
     @ResponseBody
     @RequestMapping("/ajaxUpload")
-    public JSONObject ajaxUploadExcel(MultipartFile upfile) throws Exception {
+    public JSONObject ajaxUploadExcel(@RequestParam MultipartFile file) throws Exception {
         JSONObject jsonObject = new JSONObject();
         Integer flag = 0;
         InputStream in =null;
         List<List<Object>> listob = null;
-        if(upfile.isEmpty()){
+        if(file.isEmpty()){
             throw new Exception("文件不存在！");
         }
 
-        in = upfile.getInputStream();
-        flag = service.UploadExcel(in, upfile, listob);
+        in = file.getInputStream();
+        flag = service.UploadExcel(in, file, listob);
         jsonObject.put("upload", flag);
         return jsonObject;
     }
