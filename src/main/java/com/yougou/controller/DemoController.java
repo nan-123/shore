@@ -1,8 +1,11 @@
 package com.yougou.controller;
 
 import com.alibaba.fastjson.JSONObject;
+import com.yougou.mapper.DepartmentMapper;
 import com.yougou.mapper.UserMapper;
+import com.yougou.pojo.Department;
 import com.yougou.pojo.User;
+import com.yougou.service.IDepartmentService;
 import com.yougou.service.IUserService;
 import com.yougou.service.impl.MailService;
 import com.yougou.util.RedisUtils;
@@ -31,6 +34,12 @@ public class DemoController {
 
     @Resource
    private MailService mailService;
+
+    @Resource
+    private IDepartmentService departmentService;
+
+    @Resource
+    private DepartmentMapper departmentMapper;
 
     @ResponseBody
     @RequestMapping("/hello")
@@ -177,4 +186,15 @@ public class DemoController {
     public void sendSimpleMail() {
    mailService.sendSimpleMail("280173077@qq.com", "主题：简单邮件", "测试邮件内容");
             }
+
+    @RequestMapping("/dept")
+    @ResponseBody
+    public void deptTest(){
+        Department department = new Department();
+         department.setName("开发部1");
+        department.setPid("0");
+        department.setDes("测试");
+        departmentMapper.insert(department);
+    }
+
 }

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yougou.mapper.DepartmentMapper">
+	<resultMap id="BaseResultMap" type="com.yougou.pojo.Department">
+		<id column="id" jdbcType="VARCHAR" property="id" />
+		<result column="name" jdbcType="VARCHAR" property="name" />
+		<result column="pid" jdbcType="VARCHAR" property="pid" />
+		<result column="des" jdbcType="VARCHAR" property="des" />
+	</resultMap>
+	
+	<select id="getDepartment" parameterType="com.yougou.pojo.Department"  resultMap="BaseResultMap">
+		select * from Department where 1= 1
+			<if test="name != null and name !='' ">
+				and name like CONCAT('%',#{name},'%')
+			</if>
+			<if test="pid != null and pid !='' ">
+				and pid = #{pid}
+			</if>
+			<if test="des != null and des !='' ">
+				and des like CONCAT('%',#{des},'%')
+			</if>
+
+
+	</select>
+
+	<select id="getDepartmentCount" parameterType="com.yougou.pojo.Department"  resultType="Integer">
+		select count(*) from Department where 1=1
+			<if test="name != null and name !='' ">
+				and name like CONCAT('%',#{name},'%')
+			</if>
+		<if test="pid != null and pid !='' ">
+			and pid = #{pid}
+		</if>
+		<if test="des != null and des !='' ">
+			and des like CONCAT('%',#{des},'%')
+		</if>
+	</select>
+</mapper>
