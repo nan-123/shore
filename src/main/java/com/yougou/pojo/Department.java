@@ -1,6 +1,8 @@
 package com.yougou.pojo;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Table(name = "department")
 public class Department {
@@ -11,7 +13,7 @@ public class Department {
     private int id;
 
     @Column(name = "name")
-    private String name;
+    private String title;
 
     @Column(name = "pid")
     private String pid;
@@ -19,6 +21,8 @@ public class Department {
     @Column(name = "des")
     private String des;
 
+    @Transient
+    private List<Department> children = new ArrayList<>();
 
     public int getId() {
         return id;
@@ -28,12 +32,12 @@ public class Department {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getTitle() {
+        return title;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public String getPid() {
@@ -50,5 +54,13 @@ public class Department {
 
     public void setDes(String des) {
         this.des = des;
+    }
+
+    public List<Department> getChildren() {
+        return children;
+    }
+
+    public void setChildren(List<Department> children) {
+        this.children = children;
     }
 }

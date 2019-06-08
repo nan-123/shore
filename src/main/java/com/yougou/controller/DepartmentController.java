@@ -44,4 +44,10 @@ public class DepartmentController {
         return  jsonObject;
     }
 
+    @RequestMapping("/getDeptNode")
+    @ResponseBody
+    List getDeptNode(){
+       return departmentService.getDepeNode();
+    }
+
 }

@@ -9,4 +9,6 @@ public interface IDepartmentService {
     List<Department> getDepartment(Department department);
 
     Integer getDepartmentCount(Department department);
+
+    List<Department> getDepeNode();
 }
