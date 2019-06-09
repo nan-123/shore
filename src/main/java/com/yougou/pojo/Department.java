@@ -13,7 +13,7 @@ public class Department {
     private int id;
 
     @Column(name = "name")
-    private String title;
+    private String name;
 
     @Column(name = "pid")
     private String pid;
@@ -32,12 +32,12 @@ public class Department {
         this.id = id;
     }
 
-    public String getTitle() {
-        return title;
+    public String getName() {
+        return name;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getPid() {

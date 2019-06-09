@@ -29,10 +29,9 @@ public class DepartmentController {
 
     @RequestMapping("/getDept")
     @ResponseBody
-    JSONObject getDept(Department dept){
-        if (dept == null) {
-            dept = new Department();
-        }
+    JSONObject getDept(String name){
+          Department  dept = new Department();
+          dept.setName(name);
         JSONObject jsonObject = new JSONObject();
         List<Department> list = departmentService.getDepartment(dept);
         Integer departmentCount = departmentService.getDepartmentCount(dept);

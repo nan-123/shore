@@ -191,7 +191,7 @@ public class DemoController {
     @ResponseBody
     public void deptTest(){
         Department department = new Department();
-         department.setTitle("开发部1");
+         department.setName("开发部1");
         department.setPid("0");
         department.setDes("测试");
         departmentMapper.insert(department);
