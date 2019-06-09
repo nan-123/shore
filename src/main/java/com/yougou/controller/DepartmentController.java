@@ -49,4 +49,16 @@ public class DepartmentController {
        return departmentService.getDepeNode();
     }
 
+    @RequestMapping("/delDept")
+    @ResponseBody
+    JSONObject delDept(String id){
+        Integer code = departmentService.delDept(id);
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("code", code);
+        return jsonObject;
+    }
+
+
+
+
 }

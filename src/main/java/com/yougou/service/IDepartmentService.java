@@ -11,4 +11,6 @@ public interface IDepartmentService {
     Integer getDepartmentCount(Department department);
 
     List<Department> getDepeNode();
+
+    Integer delDept(String id);
 }

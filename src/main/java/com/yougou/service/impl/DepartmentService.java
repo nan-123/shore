@@ -32,6 +32,32 @@ public class DepartmentService implements IDepartmentService {
         return makeTree(list, 0);
     }
 
+    @Override
+    public Integer delDept(String id) {
+        Department department = new Department();
+        department.setId(Integer.valueOf(id));
+        Department node = departmentMapper.selectByPrimaryKey(department);
+        if (node != null){
+            if (node.getPid().equals("0")){
+                return 1;
+            }
+            // 获取子部门删除
+            Department childNode = new Department();
+            childNode.setPid(id);
+            List<Department> childNodes = getDepartment(childNode);
+            if (childNodes != null && childNodes.size() > 0){
+                for (Department dp : childNodes) {
+                    departmentMapper.delete(dp);
+                }
+            }
+
+            departmentMapper.delete(node);
+        }
+
+        return 0;
+
+    }
+
     private  List<Department> makeTree(List<Department> departmentList, int pId) {
 
         //子类
