@@ -31,6 +31,10 @@ public final class RedisUtils {
 
 	// =============================common============================
 
+
+
+
+
 	/**
 	 * 指定缓存失效时间
 	 * 
@@ -45,6 +49,8 @@ public final class RedisUtils {
 			}
 			return true;
 		} catch (Exception e) {
+			logger.error("设置缓存失效时间，失败：" + e);
+			logger.error("设置缓存失效时间，失败：" + e);
 			logger.error("设置缓存失效时间，失败：" + e);
 			return false;
 		}
