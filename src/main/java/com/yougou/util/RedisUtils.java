@@ -56,6 +56,22 @@ public final class RedisUtils {
 			logger.error("设置缓存失效时间，失败：" + e);
 			logger.error("设置缓存失效时间，失败：" + e);
 			logger.error("设置缓存失效时间，失败：" + e);
+			logger.error("设置缓存失效时间，失败：" + e);
+			logger.error("设置缓存失效时间，失败：" + e);
+			logger.error("设置缓存失效时间，失败：" + e);
+			logger.error("设置缓存失效时间，失败：" + e);
+			logger.error("设置缓存失效时间，失败：" + e);
+			logger.error("设置缓存失效时间，失败：" + e);
+			logger.error("设置缓存失效时间，失败：" + e);
+			logger.error("设置缓存失效时间，失败：" + e);
+			logger.error("设置缓存失效时间，失败：" + e);
+			logger.error("设置缓存失效时间，失败：" + e);
+			logger.error("设置缓存失效时间，失败：" + e);
+			logger.error("设置缓存失效时间，失败：" + e);
+			logger.error("设置缓存失效时间，失败：" + e);
+			logger.error("设置缓存失效时间，失败：" + e);
+			logger.error("设置缓存失效时间，失败：" + e);
+			logger.error("设置缓存失效时间，失败：" + e);
 			return false;
 		}
 	}
@@ -82,6 +98,22 @@ public final class RedisUtils {
 		try {
 			return redisTemplate.hasKey(key);
 		} catch (Exception e) {
+			logger.error("判断key是否存在，失败：" + e);
+			logger.error("判断key是否存在，失败：" + e);
+			logger.error("判断key是否存在，失败：" + e);
+			logger.error("判断key是否存在，失败：" + e);
+			logger.error("判断key是否存在，失败：" + e);
+			logger.error("判断key是否存在，失败：" + e);
+			logger.error("判断key是否存在，失败：" + e);
+			logger.error("判断key是否存在，失败：" + e);
+			logger.error("判断key是否存在，失败：" + e);
+			logger.error("判断key是否存在，失败：" + e);
+			logger.error("判断key是否存在，失败：" + e);
+			logger.error("判断key是否存在，失败：" + e);
+			logger.error("判断key是否存在，失败：" + e);
+			logger.error("判断key是否存在，失败：" + e);
+			logger.error("判断key是否存在，失败：" + e);
+			logger.error("判断key是否存在，失败：" + e);
 			logger.error("判断key是否存在，失败：" + e);
 			return false;
 		}
