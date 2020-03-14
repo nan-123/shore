@@ -26,12 +26,7 @@ public class ExcelUtil {
 
         // 第三步，在sheet中添加表头第0行,注意老版本poi对Excel的行数列数有限制
         HSSFRow row = sheet.createRow(0);
-
-<<<<<<< HEAD
-
-=======
-       
->>>>>>> origin/dev-ces
+        
         HSSFCellStyle style = wb.createCellStyle();
         style.setAlignment(HSSFCellStyle.ALIGN_CENTER); // 创建一个居中格式
 
