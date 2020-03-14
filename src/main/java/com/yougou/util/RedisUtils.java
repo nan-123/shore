@@ -102,6 +102,13 @@ public final class RedisUtils {
 			logger.error("判断key是否存在，失败：" + e);
 			logger.error("判断key是否存在，失败：" + e);
 			logger.error("判断key是否存在，失败：" + e);
+			logger.error("判断key是否存在，失败：" + e);
+			logger.error("判断key是否存在，失败：" + e);
+			logger.error("判断key是否存在，失败：" + e);
+			logger.error("判断key是否存在，失败：" + e);
+			logger.error("判断key是否存在，失败：" + e);
+			logger.error("判断key是否存在，失败：" + e);
+			logger.error("判断key是否存在，失败：" + e);
 
 
 
@@ -155,6 +162,14 @@ public final class RedisUtils {
 			redisTemplate.opsForValue().set(key, value);
 			return true;
 		} catch (Exception e) {
+			logger.error("将object写入缓存，失败：" + e);
+			logger.error("将object写入缓存，失败：" + e);
+			logger.error("将object写入缓存，失败：" + e);
+			logger.error("将object写入缓存，失败：" + e);
+			logger.error("将object写入缓存，失败：" + e);
+			logger.error("将object写入缓存，失败：" + e);
+			logger.error("将object写入缓存，失败：" + e);
+			logger.error("将object写入缓存，失败：" + e);
 			logger.error("将object写入缓存，失败：" + e);
 			return false;
 		}
