@@ -52,6 +52,10 @@ public final class RedisUtils {
 			logger.error("设置缓存失效时间，失败：" + e);
 			logger.error("设置缓存失效时间，失败：" + e);
 			logger.error("设置缓存失效时间，失败：" + e);
+			logger.error("设置缓存失效时间，失败：" + e);
+			logger.error("设置缓存失效时间，失败：" + e);
+			logger.error("设置缓存失效时间，失败：" + e);
+			logger.error("设置缓存失效时间，失败：" + e);
 			return false;
 		}
 	}
