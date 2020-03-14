@@ -163,14 +163,7 @@ public final class RedisUtils {
 			return true;
 		} catch (Exception e) {
 			logger.error("将object写入缓存，失败：" + e);
-			logger.error("将object写入缓存，失败：" + e);
-			logger.error("将object写入缓存，失败：" + e);
-			logger.error("将object写入缓存，失败：" + e);
-			logger.error("将object写入缓存，失败：" + e);
-			logger.error("将object写入缓存，失败：" + e);
-			logger.error("将object写入缓存，失败：" + e);
-			logger.error("将object写入缓存，失败：" + e);
-			logger.error("将object写入缓存，失败：" + e);
+			logger.error("修改点1" + e);
 			return false;
 		}
 	}
@@ -344,6 +337,7 @@ public final class RedisUtils {
 			return true;
 		} catch (Exception e) {
 			logger.error("向hash表中写数据并设置过期，失败：" + e);
+			logger.error("修改点2" + e);
 			return false;
 		}
 	}
