@@ -26,6 +26,7 @@ public class UserService implements IUserService{
 
     @Override
     public Integer login(String  loginName, String pwd) {
+        userMapper.selectByPrimaryKey(null);
         Integer code = 200;
         if (loginName == null || loginName.trim().length() == 0){
             code = 500;

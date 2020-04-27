@@ -1,8 +1,6 @@
 package com.yougou.serializer;
 
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
+import java.io.*;
 
 public class JavaSerializer implements ISerializer {
 
@@ -31,6 +29,23 @@ public class JavaSerializer implements ISerializer {
 
     @Override
     public <T> T deSerializer(byte[] data, Class<T> clazz) {
+        ByteArrayInputStream byteArrayOutputStream = new ByteArrayInputStream(data);
+        ObjectInputStream objectOutputStream = null;
+        try {
+            objectOutputStream = new ObjectInputStream(byteArrayOutputStream);
+            return (T)objectOutputStream.readObject();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }finally {
+            try {
+                if (objectOutputStream != null){
+                    objectOutputStream.close();
+                }
+                if (byteArrayOutputStream != null){byteArrayOutputStream.close();}
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
         return null;
     }
 }
